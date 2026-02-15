@@ -1,0 +1,29 @@
+{
+  "name": "back",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/bun": "latest",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/qrcode": "^1.5.6"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.4.1",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.4",
+    "elysia": "^1.4.25",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.17.0",
+    "promptpay-qr": "^0.5.0",
+    "qrcode": "^1.5.4"
+  },
+  "scripts": {
+    "dev": "bun --watch ./Src/index.ts"
+  }
+}
