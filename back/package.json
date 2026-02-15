@@ -24,6 +24,7 @@
     "qrcode": "^1.5.4"
   },
   "scripts": {
-    "dev": "bun --watch ./Src/index.ts"
+    "dev": "bun --watch ./Src/index.ts",
+    "start": "bun ./Src/index.ts"
   }
 }
