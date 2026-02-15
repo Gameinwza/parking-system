@@ -4,10 +4,16 @@ import { paymentRoutes } from "./routes/payment.route";
 import { vehicleRoutes } from "./routes/vehicle.route";
 import { adminRoutes } from "./routes/admin.route";
 import { authRoutes } from "./routes/auth.route";
-import cors from "@elysiajs/cors";
 import { userRoutes } from "./routes/user.route";
+import cors from "@elysiajs/cors";
 
 const app = new Elysia();
+
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "*",
+  })
+);
 
 app.use(reservationRoutes);
 app.use(paymentRoutes);
@@ -16,13 +22,9 @@ app.use(adminRoutes);
 app.use(authRoutes);
 app.use(userRoutes);
 
-// app.get("/ping", () => "pong");
+// ✅ ใช้ PORT จาก Render
+const port = Number(process.env.PORT) || 3000;
 
+app.listen(port);
 
-app.use(
-    cors({
-        origin: process.env.FRONTEND_URL,
-    })
-)
-app.listen(3000);
-console.log("Server running on http://localhost:3000");
+console.log(`🚀 Server running on port ${port}`);
