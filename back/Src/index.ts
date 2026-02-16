@@ -6,6 +6,7 @@ import { adminRoutes } from "./routes/admin.route";
 import { authRoutes } from "./routes/auth.route";
 import { userRoutes } from "./routes/user.route";
 import cors from "@elysiajs/cors";
+import { pool } from "./config/db";
 
 const app = new Elysia();
 
@@ -21,8 +22,16 @@ app.use(vehicleRoutes);
 app.use(adminRoutes);
 app.use(authRoutes);
 app.use(userRoutes);
+app.get("/", () => "API WORKING");
+app.get("/ping", () => "pong");
 
-// ✅ ใช้ PORT จาก Render
+import { pool } from "./config/db";
+
+app.get("/db-test", async () => {
+  const [rows] = await pool.query("SELECT COUNT(*) as total FROM users");
+  return rows;
+});
+
 const port = Number(process.env.PORT) || 3000;
 
 app.listen(port);
